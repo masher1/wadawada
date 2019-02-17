@@ -6,7 +6,7 @@ from tkinter.ttk import *
 
 master = Tk()
 master.title("Welcome to Wadawada")
-lbl = Label(master, text="Enter up to 5 ingredients: ")
+lbl = Label(master, text="Enter up to 10 ingredients: ")
 lbl.grid(row=0)
 
 e2 = Entry(master)
@@ -20,16 +20,35 @@ def ingreddy():
         mying.append(e2.get())
         print(mying)
     else:
+        def eat():
+            iwanttoeat = p2.get()
+            txt = scrolledtext.ScrolledText(lister, width=100, height=20)
+            txt.grid(row=3, column=0, sticky=W)
+            req_ = requests.get('https://api.wegmans.io/meals/recipes/'+iwanttoeat+'/?api-version=2018-10-18&Subscription-Key=ecfcb1444dfb46db9e12517128dbdbaa')
+            jp = req_.json()
+
+            if "ingredients" in jp:
+                for each in jp['ingredients']:
+                    if "sku" in each:
+                        if contains(mying, int(each['sku'])) == False:
+                            donthave.append((each['name'],each['sku']))
+
+            txt.insert(INSERT, "YOU DONT HAVE ANY: \n\n")
+            for d in donthave:
+                txt.insert(INSERT, str(d[0]) + '\n')
+            txt.insert(INSERT, "\nGO BUY IT FROM WEGGIES")
+
+
         calculate_button.grid_remove()
         master.destroy()
         lister = Tk()
         lister.title("We found these meals")
         lister.geometry('900x700')
-        txt = scrolledtext.ScrolledText(lister, width=100, height=30)
+        txt = scrolledtext.ScrolledText(lister, width=100, height=20)
         txt.grid(row=0,column=0,sticky=W)
         p2 = Entry(lister)
         p2.grid(row=1,column=0, sticky=W)
-        eat = Button(lister,text = "eat!",command = "eat")
+        eat = Button(lister,text = "eat!",command = eat)
         eat.grid(row=2, column=0, sticky=W)
         # mying = [23792,42994,11232,164850,31197,32200,92624,92646,94177,80133,33864] #list of sku's
         meals = list()
@@ -55,27 +74,9 @@ def ingreddy():
         for p in meals:
             txt.insert(INSERT,str(p)+'\n')
 
-        def eat():
-            iwanttoeat = p2.get()
-            p2.destroy()
-            req_ = requests.get('https://api.wegmans.io/meals/recipes/'+iwanttoeat+'/?api-version=2018-10-18&Subscription-Key=ecfcb1444dfb46db9e12517128dbdbaa')
-            jp = req_.json()
-
-            if "ingredients" in jp:
-                for each in jp['ingredients']:
-                    if "sku" in each:
-                        if contains(mying, int(each['sku'])) == False:
-                            donthave.append((each['name'],each['sku']))
-
-            print("YOU DONT HAVE ANY: \n")
-
-            for d in donthave:
-                print(d[0])
-
-            print("\nGO BUY THE FFOLLOWING ITEMS FROM WEGMANS")
 
         lister.mainloop()
-        # iwanttoeat = input("\n WHAT DO YOU WANT TO EAT ?!\n")
+        # iwanttoeat = input("\n WHAT THE FUCK DO YOU WANT TO EAT ?!\n")
         #
         # req_ = requests.get('https://api.wegmans.io/meals/recipes/'+iwanttoeat+'/?api-version=2018-10-18&Subscription-Key=ecfcb1444dfb46db9e12517128dbdbaa')
         # jp = req_.json()
@@ -86,12 +87,12 @@ def ingreddy():
         #             if contains(mying, int(each['sku'])) == False:
         #                 donthave.append((each['name'],each['sku']))
         #
-        # print("YOU DONT HAVE ANY: \n")
+        # print("YOU DONT HAVE ANY FUCKING: \n")
         #
         # for d in donthave:
         #     print(d[0])
         #
-        # print("\nGO BUY THAT FROM WEGMANS NOW!")
+        # print("\nGO BUY THAT SHIT FROM WEGGIES MOTHER FUCKER")
 
         ###########################################################################
 
