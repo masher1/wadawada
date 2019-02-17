@@ -36,13 +36,12 @@ def ingreddy():
             txt.insert(INSERT, "YOU DONT HAVE ANY: \n\n")
             for d in donthave:
                 txt.insert(INSERT, str(d[0]) + '\n')
-            txt.insert(INSERT, "\BUY THESE INGREDIENTS FROM WEGMANS!")
-
+            txt.insert(INSERT, "\nBUY THESE INGREDIENTS FROM WEGMANS!")
 
         calculate_button.grid_remove()
         master.destroy()
         lister = Tk()
-        lister.title("We found these meals")
+        lister.title("We found these recipes")
         lister.geometry('900x700')
         txt = scrolledtext.ScrolledText(lister, width=100, height=20)
         txt.grid(row=0,column=0,sticky=W)
@@ -77,6 +76,7 @@ def ingreddy():
 
         lister.mainloop()
 
+
         ###########################################################################
 
 
@@ -84,25 +84,26 @@ def ingreddy():
 calculate_button = Button(master, text="Calculate", command=ingreddy)
 calculate_button.grid(row=1, column=1, sticky=W)
 
-lbl1 = Label(master, text="")
-lbl1.grid(column=1, row=1)
 master.geometry('400x400')
 
 vegan = IntVar()
 vegetarian = IntVar()
 gluten = IntVar()
 
-
 def func():
-    if vegan.get() or vegetarian.get() or gluten.get() == 1:
-        lbl1.config(text="Hello")
-    else:
-        lbl1.config(text="Nothing")
+    if vegan.get() == 1:
+        mying.append("Vegan")
+def func1():
+    if vegetarian.get() == 1:
+        mying.append("Vegetarian")
+def func2():
+    if gluten.get() == 1:
+        mying.append("Gluten")
 
 
 chk = Checkbutton(master, text="Vegan", variable=vegan, command=func).grid(row=3, sticky=W)
-chk1 = Checkbutton(master, text="Vegetarian", variable=vegetarian, command=func).grid(row=4, sticky=W)
-chk2 = Checkbutton(master, text="Gluten", variable=gluten, command=func).grid(row=5, sticky=W)
+chk1 = Checkbutton(master, text="Vegetarian", variable=vegetarian, command=func1).grid(row=4, sticky=W)
+chk2 = Checkbutton(master, text="Gluten", variable=gluten, command=func2).grid(row=5, sticky=W)
 
 ########################***MEAL ANALYZRE***################################
 
