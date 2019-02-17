@@ -28,19 +28,6 @@ for each in mying:
     for things in j['results']:
         meals.append((things['name'],things['id']))
 
-# for p in meals:
-#     num_have = 0
-#     num_ing = 0
-#     reqe = requests.get(
-#         'https://api.wegmans.io/meals/recipes/' + str(p[1]) + '/?api-version=2018-10-18&Subscription-Key=ecfcb1444dfb46db9e12517128dbdbaa')
-#     jp = reqe.json()
-#     if "ingredients" in jp:
-#         for each in jp['ingredients']:
-#             if "sku" in each:
-#                 if contains2(mying,each['sku']):
-#                     num_have +=1
-#                 num_ing += 1
-#     p[2]: num_have/num_ing
 for p in meals:
     print(p)
 
