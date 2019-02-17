@@ -36,7 +36,7 @@ def ingreddy():
             txt.insert(INSERT, "YOU DONT HAVE ANY: \n\n")
             for d in donthave:
                 txt.insert(INSERT, str(d[0]) + '\n')
-            txt.insert(INSERT, "\nGO BUY IT FROM WEGMANS")
+            txt.insert(INSERT, "\BUY THESE INGREDIENTS FROM WEGMANS!")
 
 
         calculate_button.grid_remove()
