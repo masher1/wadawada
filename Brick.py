@@ -6,7 +6,7 @@ from tkinter.ttk import *
 
 master = Tk()
 master.title("Welcome to Wadawada")
-lbl = Label(master, text="Enter up to 10 ingredients: ")
+lbl = Label(master, text="Enter up to 5 ingredients: ")
 lbl.grid(row=0)
 
 e2 = Entry(master)
@@ -67,15 +67,15 @@ def ingreddy():
                         if contains(mying, int(each['sku'])) == False:
                             donthave.append((each['name'],each['sku']))
 
-            print("YOU DONT HAVE ANY FUCKING: \n")
+            print("YOU DONT HAVE ANY: \n")
 
             for d in donthave:
                 print(d[0])
 
-            print("\nGO BUY THAT SHIT FROM WEGGIES MOTHER FUCKER")
+            print("\nGO BUY THE FFOLLOWING ITEMS FROM WEGMANS")
 
         lister.mainloop()
-        # iwanttoeat = input("\n WHAT THE FUCK DO YOU WANT TO EAT ?!\n")
+        # iwanttoeat = input("\n WHAT DO YOU WANT TO EAT ?!\n")
         #
         # req_ = requests.get('https://api.wegmans.io/meals/recipes/'+iwanttoeat+'/?api-version=2018-10-18&Subscription-Key=ecfcb1444dfb46db9e12517128dbdbaa')
         # jp = req_.json()
@@ -86,12 +86,12 @@ def ingreddy():
         #             if contains(mying, int(each['sku'])) == False:
         #                 donthave.append((each['name'],each['sku']))
         #
-        # print("YOU DONT HAVE ANY FUCKING: \n")
+        # print("YOU DONT HAVE ANY: \n")
         #
         # for d in donthave:
         #     print(d[0])
         #
-        # print("\nGO BUY THAT SHIT FROM WEGGIES MOTHER FUCKER")
+        # print("\nGO BUY THAT FROM WEGMANS NOW!")
 
         ###########################################################################
 
