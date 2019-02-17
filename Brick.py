@@ -6,7 +6,7 @@ from tkinter.ttk import *
 
 master = Tk()
 master.title("Welcome to Wadawada")
-lbl = Label(master, text="Enter up to 5 ingredients: ")
+lbl = Label(master, text="Enter up to 5 ingredients that you have: ")
 lbl.grid(row=0)
 
 e2 = Entry(master)
