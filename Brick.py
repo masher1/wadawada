@@ -6,7 +6,7 @@ from tkinter.ttk import *
 
 master = Tk()
 master.title("Welcome to Wadawada")
-lbl = Label(master, text="Enter up to 10 ingredients: ")
+lbl = Label(master, text="Enter up to 5 ingredients: ")
 lbl.grid(row=0)
 
 e2 = Entry(master)
@@ -16,7 +16,7 @@ mying = []
 moveon = False
 
 def ingreddy():
-    if len(mying)<1:
+    if len(mying)<5:
         mying.append(e2.get())
         print(mying)
     else:
@@ -36,7 +36,7 @@ def ingreddy():
             txt.insert(INSERT, "YOU DONT HAVE ANY: \n\n")
             for d in donthave:
                 txt.insert(INSERT, str(d[0]) + '\n')
-            txt.insert(INSERT, "\nGO BUY IT FROM WEGGIES")
+            txt.insert(INSERT, "\nGO BUY IT FROM WEGMANS")
 
 
         calculate_button.grid_remove()
@@ -76,23 +76,6 @@ def ingreddy():
 
 
         lister.mainloop()
-        # iwanttoeat = input("\n WHAT THE FUCK DO YOU WANT TO EAT ?!\n")
-        #
-        # req_ = requests.get('https://api.wegmans.io/meals/recipes/'+iwanttoeat+'/?api-version=2018-10-18&Subscription-Key=ecfcb1444dfb46db9e12517128dbdbaa')
-        # jp = req_.json()
-        #
-        # if "ingredients" in jp:
-        #     for each in jp['ingredients']:
-        #         if "sku" in each:
-        #             if contains(mying, int(each['sku'])) == False:
-        #                 donthave.append((each['name'],each['sku']))
-        #
-        # print("YOU DONT HAVE ANY FUCKING: \n")
-        #
-        # for d in donthave:
-        #     print(d[0])
-        #
-        # print("\nGO BUY THAT SHIT FROM WEGGIES MOTHER FUCKER")
 
         ###########################################################################
 
@@ -110,16 +93,16 @@ vegetarian = IntVar()
 gluten = IntVar()
 
 
-def funck():
+def func():
     if vegan.get() or vegetarian.get() or gluten.get() == 1:
         lbl1.config(text="Hello")
     else:
         lbl1.config(text="Nothing")
 
 
-chk = Checkbutton(master, text="Vegan", variable=vegan, command=funck).grid(row=3, sticky=W)
-chk1 = Checkbutton(master, text="Vegetarian", variable=vegetarian, command=funck).grid(row=4, sticky=W)
-chk2 = Checkbutton(master, text="Gluten", variable=gluten, command=funck).grid(row=5, sticky=W)
+chk = Checkbutton(master, text="Vegan", variable=vegan, command=func).grid(row=3, sticky=W)
+chk1 = Checkbutton(master, text="Vegetarian", variable=vegetarian, command=func).grid(row=4, sticky=W)
+chk2 = Checkbutton(master, text="Gluten", variable=gluten, command=func).grid(row=5, sticky=W)
 
 ########################***MEAL ANALYZRE***################################
 
