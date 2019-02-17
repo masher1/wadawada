@@ -1,0 +1,63 @@
+from tkinter import *
+
+from tkinter.ttk import *
+
+master = Tk()
+master.title("Welcome to Wadawada")
+lbl = Label(master, text="Enter # of Ingredients: ")
+lbl.grid(row=0)
+
+# #num = Entry(master)
+# e4 = int(input("enter"))
+#
+# for n in range(e4):
+e2 = Entry(master)
+e2.grid(row=0, column=1)
+
+lst = []
+
+
+def numbering():
+    lbl.config(text="Ingredients: ")
+    calculate_button.config(text="Recipe List", command=ingreddy)
+    num1 = float(e2.get())
+    num2 = int(num1)
+    lst = [None]*num2
+
+
+
+calculate_button = Button(master, text="Calculate", command=numbering)
+calculate_button.grid(row=1, column=1, sticky=W)
+
+
+def ingreddy():
+        lst.append(e2.get())
+        print(lst)
+
+# num1 = float(e2.get())
+# num2 = int(num1)
+# for i in range(num2):
+#     lst[i] = e2.get()
+#     print(lst[i])
+
+lbl1 = Label(master, text="")
+lbl1.grid(column=1, row=1)
+master.geometry('400x400')
+
+vegan = IntVar()
+vegetarian = IntVar()
+gluten = IntVar()
+
+
+def funck():
+    if vegan.get() or vegetarian.get() or gluten.get() == 1:
+        lbl1.config(text="Hello")
+    else:
+        lbl1.config(text="Nothing")
+
+
+chk = Checkbutton(master, text="Vegan", variable=vegan, command=funck).grid(row=3, sticky=W)
+chk1 = Checkbutton(master, text="Vegetarian", variable=vegetarian, command=funck).grid(row=4, sticky=W)
+chk2 = Checkbutton(master, text="Gluten", variable=gluten, command=funck).grid(row=5, sticky=W)
+
+master.mainloop()
