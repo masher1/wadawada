@@ -31,7 +31,7 @@ for each in mying:
 for p in meals:
     print(p)
 
-iwanttoeat = input("\n WHAT THE FUCK DO YOU WANT TO EAT ?!\n")
+iwanttoeat = input("\n WHAT DO YOU WANT TO EAT ?!\n")
 
 req_ = requests.get('https://api.wegmans.io/meals/recipes/'+iwanttoeat+'/?api-version=2018-10-18&Subscription-Key=ecfcb1444dfb46db9e12517128dbdbaa')
 jp = req_.json()
@@ -42,9 +42,9 @@ if "ingredients" in jp:
             if contains(mying, int(each['sku'])) == False:
                 donthave.append((each['name'],each['sku']))
 
-print("YOU DONT HAVE ANY FUCKING: \n")
+print("YOU DONT HAVE ANY: \n")
 
 for d in donthave:
     print(d[0])
 
-print("\nGO BUY THAT SHIT FROM WEGGIES MOTHER FUCKA")
+print("\nGO BUY THAT FROM WEGGMANS!")
